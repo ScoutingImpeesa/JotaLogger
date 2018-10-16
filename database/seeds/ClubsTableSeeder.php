@@ -18,12 +18,12 @@ class ClubsTableSeeder extends Seeder
     public function run()
     {
         //Data Type
-        $dataType = $this->dataType('slug', 'clubs');
+        $dataType = $this->dataType('slug', 'groep');
         if (!$dataType->exists) {
             $dataType->fill([
-                'name'                  => 'clubs',
-                'display_name_singular' => 'Club',
-                'display_name_plural'   => 'Clubs',
+                'name'                  => 'groep',
+                'display_name_singular' => 'Groep',
+                'display_name_plural'   => 'Groepen',
                 'icon'                  => 'voyager-file-text',
                 'model_name'            => 'App\\Club',
                 'controller'            => '',
@@ -34,7 +34,7 @@ class ClubsTableSeeder extends Seeder
         }
 
         //Data Rows
-        $pageDataType = DataType::where('slug', 'clubs')->firstOrFail();
+        $pageDataType = DataType::where('slug', 'groep')->firstOrFail();
         $dataRow = $this->dataRow($pageDataType, 'id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -175,16 +175,16 @@ class ClubsTableSeeder extends Seeder
 
 
         //Permissions
-        Permission::generateFor('clubs');
+        Permission::generateFor('groep');
         //Content
 
         //Menu Item
         $menu = Menu::where('name', 'admin')->firstOrFail();
         $menuItem = MenuItem::firstOrNew([
             'menu_id' => $menu->id,
-            'title'   => 'Clubs',
+            'title'   => 'Groep',
             'url'     => '',
-            'route'   => 'voyager.clubs.index',
+            'route'   => 'voyager.groep.index',
         ]);
         if (!$menuItem->exists) {
             $menuItem->fill([

@@ -1,5 +1,6 @@
 <?php
 namespace App\Widgets;
+
 use TCG\Voyager\Widgets\BaseDimmer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class ClubDimmer extends BaseDimmer
             'text'   => __('voyager::dimmer.club_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
                 'text' => __('voyager::dimmer.club_link_text'),
-                'link' => route('voyager.clubs.index'),
+                'link' => route('voyager.groep.index'),
             ],
             'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
         ]));

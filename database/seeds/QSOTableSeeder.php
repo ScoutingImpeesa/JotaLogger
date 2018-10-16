@@ -53,7 +53,7 @@ class QSOTableSeeder extends Seeder
         if (!$dataRow->exists) {
             $dataRow->fill([
                 'type'         => 'relationship',
-                'display_name' => 'Club',
+                'display_name' => 'Groep',
                 'required'     => 0,
                 'browse'       => 1,
                 'read'         => 1,

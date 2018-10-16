@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  jotalogger:
+    build: .
+    volumes:
+        - /opt/jotalogger:/jotalogger:ro
+        - storage:/var/www/html/storage:rw
+        - /opt/jotalogger/.laravel_env:/var/www/html/.env
+    ports:
+      - "4000:80"
+    depends_on:
+      - mysqldb
+      - redis
+  mysqldb:
+    # we use the mysql base image, version 5.6.36
+    image: mysql:5.7
+    # we mount a datavolume to make sure we don't loose data
+    volumes:
+        - db_data:/var/lib/mysql:rw
+    # setting some envvars to create the DB
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=jotalogger
+  redis:
+    image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - /redis.conf:/usr/local/etc/redis/redis.conf
+volumes:
+    db_data:
+    storage:
