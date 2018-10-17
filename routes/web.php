@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController');
 Route::get('page/{slug}', 'PageController@index');
+Route::get('stats', 'StatsController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
