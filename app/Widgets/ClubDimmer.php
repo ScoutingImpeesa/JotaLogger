@@ -22,13 +22,13 @@ class ClubDimmer extends BaseDimmer
     public function run()
     {
         $count = Club::count();
-        $string = trans_choice('voyager::dimmer.club', $count);
+        $string = trans_choice('dimmer.club', $count);
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-news',
             'title'  => "{$count} {$string}",
-            'text'   => __('voyager::dimmer.club_text', ['count' => $count, 'string' => Str::lower($string)]),
+            'text'   => __('dimmer.club_text', ['count' => $count, 'string' => Str::lower($string)]),
             'button' => [
-                'text' => __('voyager::dimmer.club_link_text'),
+                'text' => __('dimmer.club_link_text'),
                 'link' => route('voyager.groep.index'),
             ],
             'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
