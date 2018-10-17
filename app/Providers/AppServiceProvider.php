@@ -15,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        URL::forceScheme('https');
+        if (env('BEHIND_PROXY') == "true")
+            URL::forceScheme('https');
     }
 
     /**
