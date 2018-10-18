@@ -14,6 +14,8 @@
 Route::get('/', 'HomeController');
 Route::get('page/{slug}', 'PageController@index');
 Route::get('stats', 'StatsController@index');
+Route::get('map', 'MapController@index');
+Route::get('map/json', 'MapController@geoJson');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
